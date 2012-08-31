@@ -1,13 +1,7 @@
 package dispenser
 import money.{CashBox, Money}
 import product.Product
-/**
- * Created with IntelliJ IDEA.
- * User: natsuki
- * Date: 12/08/19
- * Time: 1:49
- * To change this template use File | Settings | File Templates.
- */
+
 class Dispenser {
 
   private val cashBox = new CashBox
@@ -32,8 +26,8 @@ class Dispenser {
     case x if buyable(x) => {
       stock.delivery(product)
       cashBox.put('dropedIn, product.calcChange(refund))
-      cashBox.put('sales, product.price)
-      Some(product)
+      cashBox.put('sales, product.price) // プロパティアクセスは排除したいけど、productとcashBoxは依存させたくない。どうしたものか、、、
+      Some((product, refund))
     }
     case _ => None
   }

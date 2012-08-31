@@ -105,7 +105,7 @@ class DispenserSpec extends Specification {
         dispenser.dropIn(Money._100)
         dispenser.dropIn(Money._100)
         dispenser.fillIn(Drink.cola)
-        dispenser.buy(Drink.cola) must equalTo(Some(Drink.cola))
+        dispenser.buy(Drink.cola) must equalTo(Some((Drink.cola, Money(80))))
       }
       "購入不可な場合は何も出てこない" in {
         val dispenser = new Dispenser
@@ -122,7 +122,7 @@ class DispenserSpec extends Specification {
         dispenser.buy(Drink.cola)
 
         dispenser.sales must equalTo(Money(120))
-        dispenser.dropedInTotal must equalTo(Money(80))
+        dispenser.dropedInTotal must equalTo(Money._0)
       }
     }
   }
