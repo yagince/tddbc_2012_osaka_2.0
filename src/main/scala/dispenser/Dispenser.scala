@@ -25,7 +25,7 @@ class Dispenser {
   def buy(product:Product) = product match {
     case x if buyable(x) => {
       stock.delivery(product)
-      cashBox.put('dropedIn, product.calcChange(refund))
+      cashBox.put('dropedIn, product.calcChange(refund)) // ここrefundするのはイケてないなぁ
       cashBox.put('sales, product.price) // プロパティアクセスは排除したいけど、productとcashBoxは依存させたくない。どうしたものか、、、
       Some((product, refund))
     }
