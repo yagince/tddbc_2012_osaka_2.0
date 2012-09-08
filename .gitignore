@@ -4,3 +4,6 @@
 
 project/project
 target
+
+# for mac
+.DS_Store
